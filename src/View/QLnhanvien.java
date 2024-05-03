@@ -4,6 +4,10 @@
  */
 package View;
 
+import Controller.DAOnv;
+import Model.Nhanvien;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author ADMIN
@@ -13,8 +17,14 @@ public class QLnhanvien extends javax.swing.JFrame {
     /**
      * Creates new form QLnhanvien
      */
+    private List<Nhanvien> nhanvien;
+    private DefaultTableModel Model;
     public QLnhanvien() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        Model=(DefaultTableModel)TableResult.getModel();
+        showTable();
+        
     }
 
     /**
@@ -35,14 +45,12 @@ public class QLnhanvien extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtManv = new javax.swing.JTextField();
         txtTennv = new javax.swing.JTextField();
         txtNgaysinh = new javax.swing.JTextField();
         txtDiachi = new javax.swing.JTextField();
         txtSdt = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
         txtLuong = new javax.swing.JTextField();
         RdNam = new javax.swing.JRadioButton();
         RdNu = new javax.swing.JRadioButton();
@@ -54,7 +62,7 @@ public class QLnhanvien extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableResult = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,9 +91,6 @@ public class QLnhanvien extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Số điện thoại:");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Email:");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Lương:");
@@ -149,7 +154,7 @@ public class QLnhanvien extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -169,7 +174,6 @@ public class QLnhanvien extends javax.swing.JFrame {
                                 .addComponent(Comboxchucvu)
                                 .addComponent(jLabel7)
                                 .addComponent(jLabel8)
-                                .addComponent(jLabel9)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -179,7 +183,6 @@ public class QLnhanvien extends javax.swing.JFrame {
                             .addComponent(txtNgaysinh)
                             .addComponent(txtDiachi)
                             .addComponent(txtSdt)
-                            .addComponent(txtEmail)
                             .addComponent(txtLuong)
                             .addComponent(txtTennv)
                             .addComponent(ComboxCV, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -224,28 +227,24 @@ public class QLnhanvien extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableResult.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "STT", "Mã nhân viên", "Họ và tên", "Giới tính", "Chức vụ", "Địa chỉ", "Số điện thoại", "Email", "Lương"
+                "STT", "Mã nhân viên", "Họ và tên", "Chức vụ", "Ngày sinh", "Giới tính", "Địa chỉ", "Số điện thoại", "Lương"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TableResult);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -267,10 +266,13 @@ public class QLnhanvien extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
@@ -320,6 +322,7 @@ public class QLnhanvien extends javax.swing.JFrame {
     private javax.swing.JLabel Comboxchucvu;
     private javax.swing.JRadioButton RdNam;
     private javax.swing.JRadioButton RdNu;
+    private javax.swing.JTable TableResult;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -333,17 +336,26 @@ public class QLnhanvien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtDiachi;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLuong;
     private javax.swing.JTextField txtManv;
     private javax.swing.JTextField txtNgaysinh;
     private javax.swing.JTextField txtSdt;
     private javax.swing.JTextField txtTennv;
     // End of variables declaration//GEN-END:variables
+
+    private void showTable() {
+        nhanvien= new DAOnv().getListNv();
+        Model.setRowCount(0);
+        for(Nhanvien nv:nhanvien)
+        {
+            Model.addRow(new Object[]{
+                    
+                        TableResult.getRowCount()+1, nv.getManv(), nv.getTennv(), nv.getChucvu(), nv.getDate(), nv.getGt(), nv.getDiachi(), nv.getSDT(), nv.getLuong()
+                    });
+        }
+    }  
 }

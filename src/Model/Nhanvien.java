@@ -10,14 +10,13 @@ package Model;
  */
 public class Nhanvien {
     private int id;
-    private String Manv, Tennv,Chucvu, Date, Gt, Diachi, SDT, Emali;
+    private String Manv, Tennv,Chucvu, Date, Gt, Diachi, SDT;
     private int Luong;
     public Nhanvien()
     {
         
     }
-
-    public Nhanvien(int id, String Manv, String Tennv, String Chucvu, String Date, String Gt, String Diachi, String SDT, String Emali, int Luong) {
+    public Nhanvien(int id, String Manv, String Tennv, String Chucvu, String Date, String Gt, String Diachi, String SDT, int Luong) {
         this.id = id;
         this.Manv = Manv;
         this.Tennv = Tennv;
@@ -26,10 +25,20 @@ public class Nhanvien {
         this.Gt = Gt;
         this.Diachi = Diachi;
         this.SDT = SDT;
-        this.Emali = Emali;
         this.Luong = Luong;
     }
 
+    public Nhanvien(String Manv, String Tennv, String Chucvu, String Date, String Gt, String Diachi, String SDT, int Luong) {
+        this.Manv = Manv;
+        this.Tennv = Tennv;
+        this.Chucvu = Chucvu;
+        this.Date = Date;
+        this.Gt = Gt;
+        this.Diachi = Diachi;
+        this.SDT = SDT;
+        this.Luong = Luong;
+    }
+    
     public int getId() {
         return id;
     }
@@ -94,20 +103,12 @@ public class Nhanvien {
         this.SDT = SDT;
     }
 
-    public String getEmali() {
-        return Emali;
-    }
-
-    public void setEmali(String Emali) {
-        this.Emali = Emali;
-    }
-
     public int getLuong() {
         return Luong;
     }
-
+ 
     public void setLuong(int Luong) {
         this.Luong = Luong;
     }
-    
+
 }
