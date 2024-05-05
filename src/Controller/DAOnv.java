@@ -70,6 +70,24 @@ public class DAOnv {
         return list;
     }
 
+    public void AddNV(Nhanvien n){
+        String sql="INSERT INTO tbinhnhanvien ([Mã nhân viên], [Name], [Chức vụ], [Ngày sinh], [Giới tính], [Địa chỉ], [Số điện thoại], [Lương])VALUES "
+                + "(?, ?, ?, ?, ?, ?, ?, ?)";
+        try{
+            PreparedStatement ps= connection.prepareStatement(sql);
+            ps.setString(1,n.getManv());
+            ps.setString(2,n.getTennv());
+            ps.setString(3,n.getChucvu());
+            ps.setString(4,n.getDate());
+            ps.setString(5,n.getGt());
+            ps.setString(6,n.getDiachi());
+            ps.setString(7,n.getSDT());
+            ps.setInt(8,n.getLuong());
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public static void main(String[] args) {
         new DAOnv();
     }
